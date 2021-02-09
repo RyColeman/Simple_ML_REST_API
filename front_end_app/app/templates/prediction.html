@@ -1,0 +1,21 @@
+{% extends 'layout.html' %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/success.css') }}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block content %}
+<div class="success-wrapper">
+  <h1>Here's the prediction response from the API:</h1>
+  <p><b>Iris Species: </b></p>
+  <p>{{species}}</p>
+</div>
+
+<br>
+
+<div class="success-wrapper">
+    <form action="/" method="GET" align="center" style="width:100%">
+        <input type="submit" value="Make Another Prediction" style="width:100%"/>
+    </form>
+</div>
+{% endblock %}

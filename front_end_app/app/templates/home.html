@@ -1,0 +1,50 @@
+{% extends 'layout.html' %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/forms.css') }}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block content %}
+<div class="formwrapper">
+  <h2 class="title">Type in flower measurements to predict the iris species:</h2>
+  <form method="GET" action="/prediction">
+    <div class="form-field">{{ form.sepal_length.label }} {{ form.sepal_length(size=20) }}
+      {% if form.sepal_length.errors %}
+        <ul class="errors">
+          {% for error in form.sepal_length.errors %}
+            <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </div>
+    <div class="form-field">{{ form.sepal_width.label }} {{ form.sepal_width(size=20) }}
+      {% if form.sepal_width.errors %}
+        <ul class="errors">
+          {% for error in form.sepal_width.errors %}
+            <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </div>
+    <div class="form-field">{{ form.petal_length.label }} {{ form.petal_length(size=20) }}
+      {% if form.petal_length.errors %}
+        <ul class="errors">
+          {% for error in form.petal_length.errors %}
+            <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </div>
+    <div class="form-field">{{ form.petal_width.label }} {{ form.petal_width(size=20) }}
+      {% if form.petal_width.errors %}
+        <ul class="errors">
+          {% for error in form.petal_width.errors %}
+            <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </div>
+    {{ form.submit }}
+  </form>
+</div>
+{% endblock %}
