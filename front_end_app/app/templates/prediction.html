@@ -9,6 +9,14 @@
   <h1>Here's the prediction response from the API:</h1>
   <p><b>Iris Species: </b></p>
   <p>{{species}}</p>
+  <br>
+  <p>Here's the percent chance breakdown:</p>
+  <p><b>Iris-Setosa: </b></p>
+  <p>{{'%0.2f'| format(prob_setosa*100|float)}}%</p>
+  <p><b>Iris-Versicolour: </b></p>
+  <p>{{'%0.2f'| format(prob_versicolour*100|float)}}%</p>
+  <p><b>Iris-Virginica: </b></p>
+  <p>{{'%0.2f'| format(prob_virginica*100|float)}}%</p>
 </div>
 
 <br>

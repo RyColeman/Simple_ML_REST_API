@@ -53,8 +53,12 @@ def prediction():
 
     if json_response.get('predicted_species') != None:
         predicted_species = json_response.get('predicted_species')
+        prob_setosa = json_response.get('prob_setosa')
+        prob_versicolour = json_response.get('prob_versicolour')
+        prob_virginica = json_response.get('prob_virginica')
 
-        return render_template('prediction.html', species=predicted_species, template='success-template')
+        return render_template('prediction.html', species=predicted_species, prob_setosa=prob_setosa, prob_versicolour=prob_versicolour, prob_virginica=prob_virginica, template='success-template')
+
     elif '400 Client Error: BAD REQUEST for url' in json_response['Error']:
         # wrong data entry (strings instead of numbers)
         return redirect(url_for('wrong_data_type'))

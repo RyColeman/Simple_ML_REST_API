@@ -52,6 +52,7 @@ class Predict(Resource):
         petal_width = args['petal_width']
 
         data = [[sepal_length, sepal_width, petal_length, petal_width]]
+        probs = model.predict_proba(data)
         pred = model.predict(data)
 
         if pred == 0:
@@ -61,8 +62,15 @@ class Predict(Resource):
         else:
             species = 'Iris-Virginica'
 
+        prob_setosa = probs[0][0]
+        prob_versicolour = probs[0][1]
+        prob_virginica = probs[0][2]
+
         response = {
-            'predicted_species': species}
+            'predicted_species': species,
+            'prob_setosa': prob_setosa,
+            'prob_versicolour': prob_versicolour,
+            'prob_virginica': prob_virginica}
 
         return {'response': response}, 200
 

@@ -11,7 +11,9 @@ This project represents my first simple proof of concept of how ML models can be
 - In this project, I decided to also include what I'm calling a 'front end' app that was built using Flask. This web app's function is to make GET requests to the API through a simple form and render the API's prediction response in a separate URL.
 - These two services are separately packaged in their own Docker containers to make for easy deployment on any system and to abstract the need to manually install dependencies. Then in order for these two containers to communicate via HTTP, they're made to share the same internal network within docker. All of this is achieved with Docker-Compose, a tool that builds and launches multiple containers on the same internal network with a simple file (called: docker-compose.yml) and a complementary terminal instruction: $ docker-compose up.
 - Each container for both the API and front end app have ports that are published locally (8000 and 5000 respectively) so you can both connect to the web app in a browser or manually send a GET request to the API on your local machine.
+
 ![App Home Page](images/app_home_page.png)
+
 ![App Prediction Page](images/app_prediction_page.png)
 
 ## Folder Contents:
