@@ -1,9 +1,9 @@
 # Serving a simple ML model in a REST API using Flask, Flask-RESTful and Docker-Compose
 
 ## Background:
-I come from the world of client facing Analytics and Data Science in the capacity of analyzing datasets and presenting results to clients on an ad-hoc basis. While this is certainly has it's value and serves a need within many businesses, my personal interest is within serving and deploying Machine Learning models to provide predictive intelligence to software applications. My career goal is to move into this type of work; however, my problem is that I haven't had job experience deploying ML models nor have I worked with any colleagues that have deployed ML models. So I set out with a goal of reaching out to other ML Engineers and Full Stack Data Scientists to learn from them and understand how typically ML models are deployed and with this knowledge, learn up on the technologies used and build a working example of my own.
+I come from the world of client facing Analytics and Data Science in the capacity of analyzing datasets and presenting results to clients on an ad-hoc basis. While this is certainly has it's value and serves a need within many businesses, I've always been curious about understanding how to serve and deploy Machine Learning models to provide predictive intelligence to software applications. So I set out on a self study with a goal of reaching out to other ML Engineers and Full Stack Data Scientists to learn from them and understand how typically ML models are deployed and with this knowledge, learn up on the technologies used and build a working example of my own.
 
-This project represents my first simple proof of concept of how ML models can be deployed in industry. The ML model I'm using here is trained on the very simple well known iris dataset from sklearn. I did this to place emphasis on the surrounding architecture of deployment as well as to publish a working concept before I create something more intellectually interesting. I have a much more interesting project in mind that I'll be working on next to integrate into this same type of ML deployment architecture, but for now, this project serves as my first proof of concept of ML deployment.
+This project represents a simple proof of concept of how an ML model can be deployed in the industry. The ML model I'm using here is trained on the very simple and well known iris dataset from sklearn. I did this to place emphasis on the surrounding architecture of deployment as well as to publish a working concept.
 
 
 ## The Architecture:
@@ -33,10 +33,16 @@ This folder contains separate testing folders for unit tests on the api and fron
 
 ## Instructions:
 0. Download [docker](https://docs.docker.com/get-docker/) and if you're using Linux download [docker-compose](https://docs.docker.com/compose/install/) separately.
+
 1. In the root directory, run "$ docker-compose up" (Where the file docker-compose.yml is located).
     - This command will build both the api and front end app containers separately, connect them both to the same network within docker so they can communicate through HTTP requests and run them.
+    - (btw, if you're getting an error of: "The data couldn’t be read because it is missing." It's because you're using a Mac with Big Sur OS and your docker version is too old. To fix this you'll have to uninstall and then reinstall docker. I ran into this issue myself and this fixed the error for me)
+
 2. In a browser go to: http://localhost:5000/.
     - This will display the front end app and when you enter in the iris flower measurements into the form, the app will make a GET request to the API containing this data and the returned response will render the API's iris species prediction in a new URL in the front end app.
 
 3. (Optional) You can also manually connect to the API if you wish using the curl command in terminal. Here's that command:
     - $ curl -i -H "Content-Type:application/json" -X GET -u my_username:my_password "localhost:8000/api/v1.0?sepal_length=1&sepal_width=1&petal_length=1&petal_width=1"
+
+4. When you're done want to exit, type: $ Ctrl+C.
+- And if you'd like to further remove the images (blueprints for docker containers built by this script) Then you can type the command: $ docker-compose down --rmi local
